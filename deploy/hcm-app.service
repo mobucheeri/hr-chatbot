@@ -1,0 +1,20 @@
+[Unit]
+Description=Meridian HCM AI Assistant (FastAPI)
+After=network.target ollama.service
+Wants=ollama.service
+
+[Service]
+Type=simple
+User=hcm
+Group=hcm
+WorkingDirectory=/home/hcm/hr-chatbot
+Environment=PATH=/home/hcm/hr-chatbot/.venv/bin
+EnvironmentFile=/home/hcm/hr-chatbot/.env
+ExecStart=/home/hcm/hr-chatbot/.venv/bin/uvicorn backend.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

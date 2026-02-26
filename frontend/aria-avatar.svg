@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+
+    <!-- Background -->
+    <radialGradient id="bgG" cx="40%" cy="25%" r="80%">
+      <stop offset="0%"   stop-color="#7B1A38"/>
+      <stop offset="100%" stop-color="#1A0510"/>
+    </radialGradient>
+
+    <!-- Primary skin — warm light tone -->
+    <radialGradient id="skinG" cx="38%" cy="22%" r="70%">
+      <stop offset="0%"   stop-color="#FDE8CC"/>
+      <stop offset="45%"  stop-color="#F5CAA0"/>
+      <stop offset="85%"  stop-color="#E8A870"/>
+      <stop offset="100%" stop-color="#D08850"/>
+    </radialGradient>
+
+    <!-- Specular skin highlight (where light hits directly) -->
+    <radialGradient id="skinHLG" cx="32%" cy="18%" r="42%">
+      <stop offset="0%"   stop-color="#FFF5E8" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FDE8CC" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Right-side face shadow -->
+    <linearGradient id="faceShadR" x1="55%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#C07840" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#904A20" stop-opacity="0.42"/>
+    </linearGradient>
+
+    <!-- Under-chin / jaw shadow -->
+    <radialGradient id="jawShadG" cx="50%" cy="100%" r="55%">
+      <stop offset="0%"   stop-color="#A06030" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#A06030" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Hair — rich near-black brown -->
+    <linearGradient id="hairG" x1="28%" y1="0%" x2="72%" y2="100%">
+      <stop offset="0%"   stop-color="#3D1C0C"/>
+      <stop offset="50%"  stop-color="#1C0A04"/>
+      <stop offset="100%" stop-color="#0D0403"/>
+    </linearGradient>
+
+    <!-- Hair sheen (specular from top-left light) -->
+    <radialGradient id="hairSG" cx="34%" cy="20%" r="42%">
+      <stop offset="0%"   stop-color="#8B5530" stop-opacity="0.85"/>
+      <stop offset="55%"  stop-color="#4A2010" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#1C0A04" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Second hair sheen band (softer) -->
+    <radialGradient id="hairSG2" cx="60%" cy="55%" r="35%">
+      <stop offset="0%"   stop-color="#6B3A18" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#1C0A04" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Iris — warm hazel-brown -->
+    <radialGradient id="irisG" cx="36%" cy="28%" r="65%">
+      <stop offset="0%"   stop-color="#A06828"/>
+      <stop offset="42%"  stop-color="#6B3D10"/>
+      <stop offset="100%" stop-color="#2C1205"/>
+    </radialGradient>
+
+    <!-- Clothing — soft white/pearl -->
+    <linearGradient id="clothG" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#EEF2F8"/>
+      <stop offset="100%" stop-color="#D8DEE8"/>
+    </linearGradient>
+
+    <!-- Circle crop -->
+    <clipPath id="cc">
+      <circle cx="100" cy="100" r="100"/>
+    </clipPath>
+
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <circle cx="100" cy="100" r="100" fill="url(#bgG)"/>
+
+  <g clip-path="url(#cc)">
+
+    <!-- ══ CLOTHING (white top, bottom of frame) ══ -->
+    <ellipse cx="100" cy="208" rx="95"  ry="58"  fill="url(#clothG)"/>
+    <!-- Shoulder shaping -->
+    <ellipse cx="42"  cy="196" rx="48"  ry="28"  fill="#E4EAF5"/>
+    <ellipse cx="158" cy="196" rx="48"  ry="28"  fill="#DDE4F0"/>
+    <!-- Neckline v-cut -->
+    <path d="M 84,172 L 100,186 L 116,172 L 113,175 L 100,190 L 87,175 Z"
+          fill="#CAD4E4"/>
+    <!-- Clothing fold shadows -->
+    <path d="M 30,198 Q 55,178 80,172 L 80,200 Z" fill="#D0D8E8" opacity="0.6"/>
+    <path d="M 170,198 Q 145,178 120,172 L 120,200 Z" fill="#C8D2E0" opacity="0.6"/>
+
+    <!-- ══ NECK ══ -->
+    <path d="M 88,158 Q 86,174 90,178 L 100,181 L 110,178 Q 114,174 112,158
+             Q 107,165 100,165 Q 93,165 88,158 Z"
+          fill="#F5CAA0"/>
+    <!-- Neck right shadow -->
+    <path d="M 108,159 Q 113,166 113,178 L 112,158 Z" fill="#C07840" opacity="0.3"/>
+    <!-- Neck left highlight -->
+    <path d="M 90,159 Q 88,165 88,174 L 89,158 Z"    fill="#FDE8CC" opacity="0.4"/>
+
+    <!-- ══ HAIR — BACK MASS (flowing shoulder-length) ══ -->
+    <path d="M 36,95
+             Q 36,30  100,24
+             Q 164,30 164,95
+             Q 165,135 162,168
+             Q 148,188 100,192
+             Q 52,188  38,168
+             Q 35,135 36,95 Z"
+          fill="url(#hairG)"/>
+
+    <!-- ══ FACE ══ -->
+    <ellipse cx="100" cy="112" rx="50" ry="58" fill="url(#skinG)"/>
+
+    <!-- Face 3D — specular highlight (upper-left lit) -->
+    <ellipse cx="82"  cy="90"  rx="26" ry="30" fill="url(#skinHLG)"/>
+    <!-- Face 3D — right-side form shadow -->
+    <ellipse cx="148" cy="112" rx="18" ry="40" fill="url(#faceShadR)"/>
+    <!-- Face 3D — jaw/chin shadow -->
+    <ellipse cx="100" cy="168" rx="40" ry="14" fill="url(#jawShadG)"/>
+
+    <!-- ══ EARS ══ -->
+    <ellipse cx="50"  cy="114" rx="9"   ry="11.5" fill="#F0BA90"/>
+    <ellipse cx="150" cy="114" rx="9"   ry="11.5" fill="#F0BA90"/>
+    <!-- Inner ear -->
+    <ellipse cx="50"  cy="114" rx="5"   ry="6.5"  fill="#D49068" opacity="0.55"/>
+    <ellipse cx="150" cy="114" rx="5"   ry="6.5"  fill="#D49068" opacity="0.55"/>
+    <!-- Ear subsurface glow -->
+    <ellipse cx="48"  cy="110" rx="3.2" ry="4"    fill="#FFAA80" opacity="0.4"/>
+    <ellipse cx="152" cy="110" rx="3.2" ry="4"    fill="#FFAA80" opacity="0.4"/>
+
+    <!-- ══ HAIR — FRONT (over face edges and forehead) ══ -->
+    <!-- Left side hair panel -->
+    <path d="M 36,95 Q 34,120 38,150 Q 42,170 50,182
+             Q 48,150 46,118 Q 48,78 54,58 Q 62,36 100,24
+             Q 65,30 48,62 Q 38,78 36,95 Z"
+          fill="url(#hairG)"/>
+    <!-- Right side hair panel -->
+    <path d="M 164,95 Q 166,120 162,150 Q 158,170 150,182
+             Q 152,150 154,118 Q 152,78 146,58 Q 138,36 100,24
+             Q 135,30 152,62 Q 162,78 164,95 Z"
+          fill="url(#hairG)"/>
+    <!-- Top of head / hairline cap -->
+    <path d="M 50,82 Q 52,28 100,22 Q 148,28 150,82
+             Q 132,60 100,58 Q 68,60 50,82 Z"
+          fill="url(#hairG)"/>
+    <!-- Hair part / centre highlight -->
+    <path d="M 98,22 Q 100,30 102,38 Q 100,35 98,22 Z"
+          fill="#5C3018" opacity="0.5"/>
+
+    <!-- Hair specular sheen — primary band -->
+    <ellipse cx="84"  cy="40"  rx="24" ry="13"   fill="url(#hairSG)"/>
+    <!-- Hair specular sheen — secondary softer band -->
+    <ellipse cx="118" cy="72"  rx="20" ry="10"   fill="url(#hairSG2)"/>
+    <!-- Hair edge gloss on left side -->
+    <path d="M 38,92 Q 36,110 40,135 Q 42,120 44,98 Z"
+          fill="#6B3A18" opacity="0.3"/>
+
+    <!-- ══ EYEBROWS ══ -->
+    <!-- Left brow — natural arch, slightly thick -->
+    <path d="M 68,89 Q 78,83 91,86"
+          stroke="#1C0A04" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M 68,90 Q 78,85 91,87"
+          stroke="#5C3010" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
+    <!-- Right brow -->
+    <path d="M 109,86 Q 122,83 132,89"
+          stroke="#1C0A04" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M 109,87 Q 122,85 132,90"
+          stroke="#5C3010" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.45"/>
+
+    <!-- ══ EYES ══ -->
+
+    <!-- ─ Left eye ─ -->
+    <!-- Socket / orbital shadow -->
+    <ellipse cx="80"  cy="103" rx="16"  ry="12"  fill="#C07040" opacity="0.22"/>
+    <!-- Sclera -->
+    <ellipse cx="80"  cy="102" rx="13.5" ry="10.5" fill="white"/>
+    <!-- Sclera inner warm tint (bottom) -->
+    <ellipse cx="80"  cy="106" rx="13.5" ry="7"   fill="#F5EDE4" opacity="0.55"/>
+    <!-- Iris -->
+    <circle  cx="80"  cy="102" r="8.5"  fill="url(#irisG)"/>
+    <!-- Iris texture ring -->
+    <circle  cx="80"  cy="102" r="7"    fill="none" stroke="#3D1C08" stroke-width="1.2" opacity="0.45"/>
+    <!-- Limbal ring (darkens iris edge) -->
+    <circle  cx="80"  cy="102" r="8.5"  fill="none" stroke="#0D0403" stroke-width="1.8"/>
+    <!-- Pupil -->
+    <circle  cx="80"  cy="102" r="5"    fill="#060200"/>
+    <!-- Catchlight — main (bright, top-left) -->
+    <circle  cx="82.8" cy="98.5" r="3"  fill="white"/>
+    <!-- Catchlight — secondary (softer, lower) -->
+    <circle  cx="76.5" cy="105.5" r="1.5" fill="white" opacity="0.55"/>
+    <!-- Upper lash line -->
+    <path d="M 66.5,98 Q 80,90 93.5,98"
+          stroke="#060200" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+    <!-- Lower lash line (subtle) -->
+    <path d="M 67,108 Q 80,114 93,108"
+          stroke="#A07858" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+    <!-- ─ Right eye ─ -->
+    <ellipse cx="120" cy="103" rx="16"  ry="12"  fill="#C07040" opacity="0.22"/>
+    <ellipse cx="120" cy="102" rx="13.5" ry="10.5" fill="white"/>
+    <ellipse cx="120" cy="106" rx="13.5" ry="7"   fill="#F5EDE4" opacity="0.55"/>
+    <circle  cx="120" cy="102" r="8.5"  fill="url(#irisG)"/>
+    <circle  cx="120" cy="102" r="7"    fill="none" stroke="#3D1C08" stroke-width="1.2" opacity="0.45"/>
+    <circle  cx="120" cy="102" r="8.5"  fill="none" stroke="#0D0403" stroke-width="1.8"/>
+    <circle  cx="120" cy="102" r="5"    fill="#060200"/>
+    <circle  cx="122.8" cy="98.5" r="3" fill="white"/>
+    <circle  cx="116.5" cy="105.5" r="1.5" fill="white" opacity="0.55"/>
+    <path d="M 106.5,98 Q 120,90 133.5,98"
+          stroke="#060200" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+    <path d="M 107,108 Q 120,114 133,108"
+          stroke="#A07858" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+    <!-- ══ NOSE (3D, realistic) ══ -->
+    <!-- Bridge shadows (bilateral) -->
+    <path d="M 96,114 Q 93,124 94,132"
+          stroke="#C88060" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.55"/>
+    <path d="M 104,114 Q 107,124 106,132"
+          stroke="#C88060" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.55"/>
+    <!-- Nose tip specular -->
+    <ellipse cx="100" cy="132" rx="5.5" ry="3.8" fill="#FFF0E0" opacity="0.55"/>
+    <!-- Alar (nostril) shadows -->
+    <path d="M 93,135 Q 90,138.5 93,140.5 Q 96,141.5 98,139"
+          fill="#A86040" opacity="0.4"/>
+    <path d="M 107,135 Q 110,138.5 107,140.5 Q 104,141.5 102,139"
+          fill="#A86040" opacity="0.4"/>
+    <!-- Under-nose shadow -->
+    <ellipse cx="100" cy="140" rx="13" ry="3.5" fill="#A86040" opacity="0.22"/>
+
+    <!-- ══ LIPS ══ -->
+    <!-- Lip ambient shadow -->
+    <ellipse cx="100" cy="150" rx="22" ry="6"  fill="#C07060" opacity="0.18"/>
+    <!-- Upper lip -->
+    <path d="M 82,147
+             Q 89,140 96,143
+             Q 100,141 104,143
+             Q 111,140 118,147
+             Q 109,150 100,149
+             Q 91,150 82,147 Z"
+          fill="#CC7268"/>
+    <!-- Cupid's bow highlight -->
+    <path d="M 96,143 Q 100,141 104,143"
+          stroke="#DC8A80" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.7"/>
+    <!-- Lower lip -->
+    <path d="M 82,147
+             Q 88,161 100,162
+             Q 112,161 118,147
+             Q 109,150 100,149
+             Q 91,150 82,147 Z"
+          fill="#B86258"/>
+    <!-- Lower lip specular -->
+    <ellipse cx="100" cy="155" rx="12" ry="5.5" fill="#D88070" opacity="0.52"/>
+    <!-- Corner dimples -->
+    <circle cx="82"  cy="147" r="2.2" fill="#9C4A40" opacity="0.5"/>
+    <circle cx="118" cy="147" r="2.2" fill="#9C4A40" opacity="0.5"/>
+
+    <!-- ══ PHILTRUM ══ -->
+    <path d="M 95,141 L 94,146" stroke="#C88060" stroke-width="1"   stroke-linecap="round" opacity="0.4"/>
+    <path d="M 105,141 L 106,146" stroke="#C88060" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+
+    <!-- ══ CHEEK BLUSH ══ -->
+    <ellipse cx="62"  cy="120" rx="18" ry="11" fill="#FF8877" opacity="0.14"/>
+    <ellipse cx="138" cy="120" rx="18" ry="11" fill="#FF8877" opacity="0.14"/>
+
+    <!-- ══ FACE FORM SHADOWS (sides — gives roundness) ══ -->
+    <ellipse cx="54"  cy="115" rx="14" ry="28" fill="#C07040" opacity="0.12"/>
+    <ellipse cx="146" cy="115" rx="14" ry="28" fill="#904A20" opacity="0.15"/>
+
+    <!-- ══ CHIN SPECULAR ══ -->
+    <ellipse cx="100" cy="165" rx="13" ry="5"  fill="#FFF0E0" opacity="0.22"/>
+
+  </g>
+</svg>

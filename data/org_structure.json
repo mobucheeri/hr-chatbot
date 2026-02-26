@@ -1,0 +1,98 @@
+{
+  "company": "Meridian Technologies",
+  "headquarters": "London, UK",
+  "offices": ["London", "Edinburgh", "Manchester", "Dublin"],
+  "total_headcount": 20,
+  "departments": [
+    {
+      "name": "Executive",
+      "code": "EXEC",
+      "head_id": "EMP001",
+      "headcount": 1,
+      "members": ["EMP001"]
+    },
+    {
+      "name": "Technology",
+      "code": "TECH",
+      "head_id": "EMP002",
+      "headcount": 2,
+      "members": ["EMP002", "EMP010"]
+    },
+    {
+      "name": "Engineering",
+      "code": "ENG",
+      "head_id": "EMP005",
+      "headcount": 7,
+      "members": ["EMP005", "EMP008", "EMP009", "EMP011", "EMP015", "EMP017", "EMP020"]
+    },
+    {
+      "name": "Finance",
+      "code": "FIN",
+      "head_id": "EMP003",
+      "headcount": 3,
+      "members": ["EMP003", "EMP007", "EMP019"]
+    },
+    {
+      "name": "Human Resources",
+      "code": "HR",
+      "head_id": "EMP004",
+      "headcount": 3,
+      "members": ["EMP004", "EMP014", "EMP018"]
+    },
+    {
+      "name": "Sales",
+      "code": "SALES",
+      "head_id": "EMP006",
+      "headcount": 3,
+      "members": ["EMP006", "EMP012", "EMP016"]
+    },
+    {
+      "name": "Marketing",
+      "code": "MKT",
+      "head_id": "EMP013",
+      "headcount": 1,
+      "members": ["EMP013"]
+    },
+    {
+      "name": "Product",
+      "code": "PROD",
+      "head_id": "EMP010",
+      "headcount": 1,
+      "members": ["EMP010"]
+    }
+  ],
+  "reporting_lines": [
+    { "employee_id": "EMP001", "reports_to": null, "direct_reports": ["EMP002", "EMP003", "EMP004", "EMP006"] },
+    { "employee_id": "EMP002", "reports_to": "EMP001", "direct_reports": ["EMP005", "EMP010"] },
+    { "employee_id": "EMP003", "reports_to": "EMP001", "direct_reports": ["EMP007"] },
+    { "employee_id": "EMP004", "reports_to": "EMP001", "direct_reports": ["EMP014"] },
+    { "employee_id": "EMP005", "reports_to": "EMP002", "direct_reports": ["EMP008", "EMP009", "EMP011", "EMP015"] },
+    { "employee_id": "EMP006", "reports_to": "EMP001", "direct_reports": ["EMP012", "EMP013"] },
+    { "employee_id": "EMP007", "reports_to": "EMP003", "direct_reports": ["EMP019"] },
+    { "employee_id": "EMP008", "reports_to": "EMP005", "direct_reports": ["EMP017"] },
+    { "employee_id": "EMP009", "reports_to": "EMP005", "direct_reports": [] },
+    { "employee_id": "EMP010", "reports_to": "EMP002", "direct_reports": ["EMP020"] },
+    { "employee_id": "EMP011", "reports_to": "EMP005", "direct_reports": [] },
+    { "employee_id": "EMP012", "reports_to": "EMP006", "direct_reports": ["EMP016"] },
+    { "employee_id": "EMP013", "reports_to": "EMP006", "direct_reports": [] },
+    { "employee_id": "EMP014", "reports_to": "EMP004", "direct_reports": ["EMP018"] },
+    { "employee_id": "EMP015", "reports_to": "EMP005", "direct_reports": [] },
+    { "employee_id": "EMP016", "reports_to": "EMP012", "direct_reports": [] },
+    { "employee_id": "EMP017", "reports_to": "EMP008", "direct_reports": [] },
+    { "employee_id": "EMP018", "reports_to": "EMP014", "direct_reports": [] },
+    { "employee_id": "EMP019", "reports_to": "EMP007", "direct_reports": [] },
+    { "employee_id": "EMP020", "reports_to": "EMP010", "direct_reports": [] }
+  ],
+  "grade_bands": {
+    "E1": { "title": "Chief Executive", "salary_min": 180000, "salary_max": 250000 },
+    "E2": { "title": "C-Suite Executive", "salary_min": 150000, "salary_max": 190000 },
+    "E3": { "title": "Senior Director", "salary_min": 120000, "salary_max": 150000 },
+    "M1": { "title": "Vice President", "salary_min": 95000, "salary_max": 130000 },
+    "M2": { "title": "Director / Senior Manager", "salary_min": 70000, "salary_max": 95000 },
+    "M3": { "title": "Manager", "salary_min": 58000, "salary_max": 78000 },
+    "IC4": { "title": "Senior Individual Contributor", "salary_min": 70000, "salary_max": 95000 },
+    "IC3": { "title": "Mid-Level Individual Contributor", "salary_min": 52000, "salary_max": 72000 },
+    "IC2": { "title": "Individual Contributor", "salary_min": 38000, "salary_max": 55000 },
+    "IC1": { "title": "Junior / Graduate", "salary_min": 28000, "salary_max": 42000 }
+  }
+}
