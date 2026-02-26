@@ -1,6 +1,6 @@
 """
 llm_client.py — LLM Integration Layer
-Attempts Ollama (local) first, falls back to OpenAI if unavailable.
+Attempts Ollama (local) first, then Claude (Anthropic), then OpenAI.
 """
 
 import os
@@ -9,12 +9,16 @@ import json
 import logging
 from typing import Optional
 
+import anthropic as anthropic_sdk
+
 logger = logging.getLogger(__name__)
 
 OLLAMA_BASE_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "mistral")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-haiku-4-5")
 REQUEST_TIMEOUT = 180.0  # 3 min — covers cold-start model loading
 
 
@@ -49,6 +53,32 @@ async def _call_ollama(messages: list[dict]) -> str:
         resp.raise_for_status()
         data = resp.json()
         return data["message"]["content"]
+
+
+# ── Claude (Anthropic) ─────────────────────────────────────────────────────────
+
+async def _call_claude(messages: list[dict]) -> str:
+    """Send a chat request to the Anthropic Claude API."""
+    if not ANTHROPIC_API_KEY:
+        raise ValueError("ANTHROPIC_API_KEY is not set.")
+
+    # Anthropic requires the system prompt as a separate parameter
+    system = None
+    chat_messages = []
+    for msg in messages:
+        if msg.get("role") == "system":
+            system = msg["content"]
+        else:
+            chat_messages.append(msg)
+
+    client = anthropic_sdk.AsyncAnthropic(api_key=ANTHROPIC_API_KEY)
+    async with client.messages.stream(
+        model=CLAUDE_MODEL,
+        max_tokens=800,
+        system=system,
+        messages=chat_messages,
+    ) as stream:
+        return await stream.get_final_text()
 
 
 # ── OpenAI ─────────────────────────────────────────────────────────────────────
@@ -108,6 +138,15 @@ async def get_llm_response(
         except Exception as e:
             logger.warning(f"Ollama call failed despite health check passing: {e}")
 
+    # Fallback to Claude (Anthropic)
+    if ANTHROPIC_API_KEY:
+        try:
+            text = await _call_claude(messages)
+            logger.info(f"Response from Claude ({CLAUDE_MODEL})")
+            return text, "claude", CLAUDE_MODEL
+        except Exception as e:
+            logger.warning(f"Claude fallback failed: {e}")
+
     # Fallback to OpenAI
     if OPENAI_API_KEY:
         try:
@@ -116,17 +155,10 @@ async def get_llm_response(
             return text, "openai", OPENAI_MODEL
         except Exception as e:
             logger.error(f"OpenAI fallback also failed: {e}")
-            return (
-                "I'm sorry, I'm unable to connect to the AI service right now. "
-                "Please ensure Ollama is running locally (`ollama serve`) or that "
-                "a valid OPENAI_API_KEY is configured.",
-                "error",
-                "none",
-            )
 
     return (
-        "No AI provider is available. Please start Ollama (`ollama serve && ollama pull mistral`) "
-        "or set the OPENAI_API_KEY environment variable.",
+        "I'm sorry, I'm unable to connect to the AI service right now. "
+        "Please ensure Ollama is running locally, or set ANTHROPIC_API_KEY or OPENAI_API_KEY.",
         "error",
         "none",
     )

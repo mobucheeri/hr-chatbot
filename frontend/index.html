@@ -932,7 +932,8 @@
       document.getElementById('providerLabel').textContent = data.provider;
       document.getElementById('providerStatus').textContent =
         data.provider === 'ollama' ? 'Local (Ollama)' :
-        data.provider === 'openai' ? 'OpenAI' : 'Error';
+        data.provider === 'openai' ? 'OpenAI' :
+        data.provider === 'claude' ? 'Claude (Anthropic)' : 'Error';
 
       // Remove typing, show response
       removeTyping(typingId);
