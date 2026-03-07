@@ -1,6 +1,6 @@
-# Meridian HCM AI Assistant
+# Aria HCM AI Assistant
 
-A full-stack HR chatbot demo that simulates an **Oracle Fusion HCM AI assistant**. Built as a portfolio project to demonstrate prompt engineering, LLM integration, RAG-style data injection, and a clean production-ready architecture.
+Aria, a full-stack HR chatbot demo that simulates an **Oracle Fusion HCM AI assistant**. Built as a portfolio project to demonstrate prompt engineering, LLM integration, RAG-style data injection, and a clean production-ready architecture.
 
 ---
 
@@ -33,18 +33,18 @@ Data:      JSON files (employees, leave, payslips, org structure)
 ```
 HR CHATBOT/
 ├── backend/
-│   ├── main.py              # FastAPI server — routes, session management
-│   ├── hcm_data.py          # Data access layer — loads and queries JSON files
-│   ├── llm_client.py        # LLM integration — Ollama first, OpenAI fallback
+│   ├── main.py              # FastAPI server: routes, session management
+│   ├── hcm_data.py          # Data access layer: loads and queries JSON files
+│   ├── llm_client.py        # LLM integration: Ollama first, OpenAI fallback
 │   ├── prompt_engine.py     # Intent detection, HCM context fetch, prompt assembly
-│   └── system_prompt.txt    # ✏️  Editable AI persona and behavioural rules
+│   └── system_prompt.txt    # Editable AI persona and behavioural rules
 ├── data/
 │   ├── employees.json        # 20 employees with departments, grades, reporting lines
 │   ├── leave_balances.json   # Annual leave, sick leave, pending requests per employee
 │   ├── payslips.json         # January 2025 payslips with full deduction breakdowns
 │   └── org_structure.json    # Departments, reporting hierarchy, grade band definitions
 ├── frontend/
-│   └── index.html            # Complete chat UI — sidebar, messages, typing indicator
+│   └── index.html            # Complete chat UI: sidebar, messages, typing indicator
 ├── .env.example              # Environment variable template
 ├── requirements.txt
 └── README.md
