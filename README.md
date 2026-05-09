@@ -1,4 +1,4 @@
-# Aria HCM AI Assistant
+# HCM AI Assistant
 
 Aria, a full-stack HR chatbot demo that simulates an **Oracle Fusion HCM AI assistant**. Built as a portfolio project to demonstrate prompt engineering, LLM integration, RAG-style data injection, and a clean production-ready architecture.
 
